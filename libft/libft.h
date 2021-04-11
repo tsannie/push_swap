@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 07:41:37 by tsannie           #+#    #+#             */
-/*   Updated: 2021/03/19 12:38:14 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:51:52 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
-
+int					ft_isnumber(char *str);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *memoryblock, int searchedchar,
 						size_t size);
@@ -96,5 +96,6 @@ int					ft_istab(char a);
 int					ft_streql(const char *s1, const char *s2);
 char				*ft_strjoin_free(char *s1, char *s2);
 char				*ft_realloc(char *src);
+int					get_next_line(int fd, char **line);
 
 #endif

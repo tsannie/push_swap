@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/08 17:35:26 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/09 01:48:29 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@
 
 NAME			= checker
 CC				= @gcc
-CFLAGS			= -Wall -Wextra -Werror #-fsanitize=leak
-LIB_FLAGS		= -lncurses -lft -Llibft
+CFLAGS			= #-Wall -Wextra -Werror #-fsanitize=leak
+LIB_FLAGS		= -lncurses -lft -L ../libft
 RM				= @rm -rf
-LIBFT			= ./libft
-INCLUDE		= -I ./includes
+LIBFT			= ../libft
+INCLUDE			= -I ./includes
 INCLUDE_LIB		= -I ../libft/libft.a
 
 ######################################################################
@@ -43,9 +43,9 @@ NAMEC			= ${BLUE}${BOLD}$(NAME)${END}
 #                        Source Files Checker                        #
 ######################################################################
 
-CHECKER			= checker.c
+CHECKER			= checker.c start_check.c
 
-SRC_CHECKER		= $(addprefix minishell_basic/srcs/bin/, $(CHECKER))
+SRC_CHECKER		= $(addprefix srcs/, $(CHECKER))
 
 ######################################################################
 #                            Object Files                            #
@@ -58,7 +58,7 @@ OBJ				= $(SRC_CHECKER:c=o)
 ######################################################################
 
 %.o: %.c
-			@printf "${PURPLE}${BOLD}Start compile ... %-50.50s\r${END}" $@
+			@printf "${PURPLE}${BOLD}Start compile ... %-30.30s\r${END}" $@
 			${CC} ${CFLAGS} -c $< -o $@
 
 all:		$(NAME)

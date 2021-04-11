@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/11 08:07:49 by tsannie           #+#    #+#              #
-#    Updated: 2021/03/29 15:17:48 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/09 16:52:07 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ ft_nbcharuihex.c ft_putstrn_fd.c ft_minvalue.c ft_maxvalue.c ft_putuihexm.c \
  ft_lstadd_back.c ft_lstlast.c ft_lstsize.c ft_lstmap.c \
 ft_lstadd_front.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c\
 ft_iscolor.c ft_ispair.c ft_streql.c ft_iswhite.c ft_realloc.c ft_free_dbtab.c \
-ft_istab.c
+ft_istab.c get_next_line.c ft_isnumber.c
 
 OBJ			= $(SRC:.c=.o)
 

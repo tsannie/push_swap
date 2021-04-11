@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   ft_isnumber.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 17:37:30 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/08 17:39:47 by tsannie          ###   ########.fr       */
+/*   Created: 2021/04/09 16:50:40 by tsannie           #+#    #+#             */
+/*   Updated: 2021/04/09 16:53:07 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "libft.h"
 
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "../../libft/libft.h"
+int		ft_isnumber(char *str)
+{
+	int		i;
 
-#endif
+	i = 0;
+	(void)(str);
+	return (0);
+}
