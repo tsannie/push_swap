@@ -6,43 +6,115 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:41:18 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/09 16:59:01 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/12 17:34:59 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 
+int		err_msg(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	return (-1);
+}
+
+void	print_stack(t_twostack *set)		// to delete
+{
+	int	i = 0;
+	int stop = (set->a.len > set->b.len) ? set->a.len : set->b.len;
+	printf("stop = %d\n", stop);
+	printf("stack A {%d}\t\tstack B {%d}\n\n", set->a.len, set->b.len);
+	while (i < stop)
+	{
+		if (set->a.len > i)
+			printf("%-11d", set->a.content[i]);
+		else
+			printf("-----------");
+		printf("\t\t");
+		if (set->b.len > i)
+			printf("%-11d\n", set->b.content[i]);
+		else
+			printf("-----------\n");
+		i++;
+	}
+}
+
+int		not_stock(t_twostack *set, char *str)
+{
+	int		value;
+	int		i;
+
+	i = 0;
+	value = ft_atoi(str);
+	while (i < set->a.len)
+	{
+		if (set->a.content[i] == value)
+			return (-1);
+		//printf("|%d|%d|\n", set->a.content[i], i);
+		i++;
+	}
+	return (0);
+}
+
 int		initargs(int ac, char **av, t_twostack *set)
 {
 	int		i;
 
-	set->a.len = ac - 1;
-	i = 1;
-	while (i < set->a.len)
-	{
-		printf("BYE\n");
-		//if (ft_isnumber(av[i]) == 0)
-			set->a.content[i - 1] = ft_atoi(av[i]);
-		i++;
-	}
+	//printf("set->a.len = %d\n", set->a.len);
+	if (!(set->a.content = malloc(sizeof(int) * ac - 1)))
+		return (-1);
+	if (!(set->b.content = malloc(sizeof(int) * ac - 1)))
+		return (-1);
 	i = 0;
-	while (i < set->a.len)
+	while (i < (ac - 1))
 	{
-		printf("%d \n", set->a.content[i]);
+		//printf("\n\n\n");
+		//printf("\n\nnb = %s | is_number = %d | not_stock = %d\nset->a.len = %d\n", av[i + 1], ft_isnumber(av[i + 1]), not_stock(set, av[i + 1]), set->a.len);
+		if (ft_isnumber(av[i + 1]) == 1 && not_stock(set, av[i + 1]) == 0)
+		{
+			//printf("CPY %s\n", av[i + 1]);
+			set->a.content[i] = ft_atoi(av[i + 1]);
+			set->a.len++;
+		}
+		else
+			return (-1);
+		//printf("%d\n", set->a.content[i]);
 		i++;
 	}
 	return (0);
+}
+
+int		sort_a(t_twostack *set)
+{
+	int	i;
+
+	i = 0;
+	while (i < set->a.len - 1)
+	{
+		//printf("check if {%d > %d}\n", set->a.content[i], set->a.content[i + 1]);
+		if (set->a.content[i] > set->a.content[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int		start_check(int ac, char **av, t_twostack *set)
 {
 	char	*line;
 
-	initargs(ac, av, set);
+	if (initargs(ac, av, set) == -1)
+		return (err_msg());
+	print_stack(set);
 	while (get_next_line(0, &line) > 0)
 	{
-		printf("%s\n", line);
+		if (disp_cmd(line, set) == -1)
+			return (err_msg());
+		print_stack(set);
 	}
-	printf("bye\n");
+	if (set->b.len != 0 || sort_a(set) != 1)
+		ft_putstr_fd("KO\n", 1);
+	else
+		ft_putstr_fd("OK\n", 1);
 	return (0);
 }

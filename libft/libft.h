@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 07:41:37 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/09 16:51:52 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/12 10:46:47 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_list
 }					t_list;
 
 int					ft_atoi(const char *str);
+long long			ft_atoll(const char *str);
 void				ft_bzero(void *s, size_t n);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);

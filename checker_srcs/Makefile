@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/09 01:48:29 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/12 16:09:35 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ NAMEC			= ${BLUE}${BOLD}$(NAME)${END}
 #                        Source Files Checker                        #
 ######################################################################
 
-CHECKER			= checker.c start_check.c
+CHECKER			= checker.c start_check.c split_arg.c disp_cmd.c push_cmd.c \
+				rotate_cmd.c reverse_rotate_cmd.c
 
 SRC_CHECKER		= $(addprefix srcs/, $(CHECKER))
 
