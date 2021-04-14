@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:37:30 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/13 13:47:50 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/14 12:35:51 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ typedef struct	s_twostack
 
 typedef struct	s_search
 {
-	int			is_search;
+	int			bigger;
+	int			smaller;
 	int			nb_found;
+	int			end;
 }				t_search;
 
 int		start_check(int ac, char **av, t_twostack *set);
