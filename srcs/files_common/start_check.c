@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:41:18 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/13 16:19:40 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/15 18:43:21 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_stack(t_twostack *set)		// to delete
 	int	i = 0;
 	int stop = (set->a.len > set->b.len) ? set->a.len : set->b.len;
 
-	//printf("stop = %d\n", stop);
+	printf("stop = %d\n", stop);
 	printf("stack A {%d}\t\tstack B {%d}\n\n", set->a.len, set->b.len);
 	while (i < stop)
 	{
@@ -99,12 +99,12 @@ int		start_check(int ac, char **av, t_twostack *set)
 
 	if (initargs(ac, av, set) == -1)
 		return (err_msg());
-	print_stack(set);
+	//print_stack(set);
 	while (get_next_line(0, &line) > 0)
 	{
 		if (disp_cmd(line, set) == -1)
 			return (err_msg());
-		print_stack(set);
+		//print_stack(set);
 	}
 	if (set->b.len != 0 || sort_a(set) != 1)
 		ft_putstr_fd("KO\n", 1);

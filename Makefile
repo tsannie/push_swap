@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/13 09:04:57 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/16 10:57:55 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,29 +73,32 @@ OBJ_P			= $(SRC_PUSHSWAP:c=o)
 ######################################################################
 
 %.o: %.c
-			@printf "${PURPLE}${BOLD}Start compile ... %-40.40s\r${END}" $@
+			@printf "${PURPLE}${BOLD}Start compile ... %-35.35s\r${END}" $@
 			${CC} ${CFLAGS} -c $< -o $@
 
 all:		$(NAME)
 
 $(NAME): 	$(OBJ_C) $(OBJ_P)
-			@echo "\n"
-			@$(MAKE) -C $(LIBFT)
-			$(CC) $(CFLAGS) $(INCLUDE) $(INCLUDE_LIB) -o $(NAME_C) $(OBJ_C) $(LIB_FLAGS)
-			$(CC) $(CFLAGS) $(INCLUDE) $(INCLUDE_LIB) -o $(NAME) $(OBJ_P) $(LIB_FLAGS)
-			@echo "\n$(NAMEC) ${GREEN}has been build !${END}\n"
-			@echo "$(NAMEP) ${GREEN}has been build !${END}\n"
+		@echo "\n"
+		@$(MAKE) -C $(LIBFT)
+		$(CC) $(CFLAGS) $(INCLUDE) $(INCLUDE_LIB) -o $(NAME_C) $(OBJ_C) $(LIB_FLAGS)
+		$(CC) $(CFLAGS) $(INCLUDE) $(INCLUDE_LIB) -o $(NAME) $(OBJ_P) $(LIB_FLAGS)
+		@echo "\n$(NAMEC) ${GREEN}has been build !${END}\n"
+		@echo "$(NAMEP) ${GREEN}has been build !${END}\n"
+
+test:
+		@./test.sh
 
 clean:
-			$(RM) $(OBJ_C) $(OBJ_P)
-			@$(MAKE) clean -C $(LIBFT)
-			@echo "${LIGHTPURPLE}Cleaning ...${END}\n"
+		$(RM) $(OBJ_C) $(OBJ_P)
+		@$(MAKE) clean -C $(LIBFT)
+		@echo "${LIGHTPURPLE}Cleaning ...${END}\n"
 
 fclean:		clean
-			$(RM) $(NAME_C) $(NAME)
-			@$(MAKE) fclean -C $(LIBFT)
-			@echo "${LIGHTPURPLE}Delete $(NAMEC)${LIGHTPURPLE} and" \
-			"$(NAMEP)${LIGHTPURPLE} ...${END}\n"
+		$(RM) $(NAME_C) $(NAME)
+		@$(MAKE) fclean -C $(LIBFT)
+		@echo "${LIGHTPURPLE}Delete $(NAMEC)${LIGHTPURPLE} and" \
+		"$(NAMEP)${LIGHTPURPLE} ...${END}\n"
 
 re:			fclean all
 
