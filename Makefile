@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/16 10:57:55 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/16 14:43:43 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ $(NAME): 	$(OBJ_C) $(OBJ_P)
 
 test:
 		@./test.sh
+		@$(MAKE) fclean
 
 clean:
 		$(RM) $(OBJ_C) $(OBJ_P)
