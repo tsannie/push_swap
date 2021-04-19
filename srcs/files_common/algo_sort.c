@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 09:04:42 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/16 15:33:14 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/19 02:21:52 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,21 @@ int		max_stack(int *tab, int len)
 	return (max);
 }
 
+int		def_mediane(int *tab, int len)
+{
+	int		e;
+	int		ret;
+
+	ret = min_stack(tab, len);
+	e = 1;
+	while (e != ((len) / 2) + 1)
+	{
+		ret = next_val_small_stack(tab, len, ret);
+		e++;
+	}
+	return (ret);
+}
+
 int		def_mediane_a(t_twostack *set, t_search *param)
 {
 	int		e;
@@ -259,9 +274,9 @@ int		split_mediane_a(t_twostack *set, t_search *param)
 		return (-1);		// big three for stack a ?
 	i = 0;
 	tmp = set->a.len - param->nb_found;
-	mediane = def_mediane_a(set, param);
+	mediane = def_mediane(set->a.content, set->a.len - param->nb_found);
 	//printf("mediane_a = %d\n", mediane);	// swap is possible ?
-	while (i < tmp) // TO USE REALLY (permet de stop si ca ne set plus) (i < tmp && end_split(set->a.content, tmp, mediane) == 1)
+	while (i < tmp && end_split(set->a.content, tmp, mediane) == 1) // TO USE REALLY (permet de stop si ca ne set plus) (i < tmp && end_split(set->a.content, tmp, mediane) == 1)
 	{
 		//if (set->a.content[0] == param->smaller)
 		//	found_smaller_a(set, param);
@@ -434,57 +449,6 @@ void	init_param(t_twostack *set, t_search *param)
 	param->stock_med[0] = 42;
 }
 
-void	little_two(t_twostack *set, t_search *param)
-{
-	while (set->b.len != 0)
-	{
-		if (set->b.content[0] == param->smaller)
-		{
-			//printf("ENTER HERE\n");
-			found_smaller_b(set, param);
-		}
-		else
-		{
-			ft_putstr_fd("sb\n", 1);
-			swap_b(set);		// faut verif swap a pour ss
-		}
-		//print_stack(set);
-	}
-}
-
-void	little_one(t_twostack *set, t_search *param)
-{
-	if (set->b.content[0] == param->smaller)
-		found_smaller_b(set, param);
-	else
-	{
-		ft_putstr_fd("pa\n", 1);
-		push_a(set);
-		//printf("CE CAS N'EST VRAIMENT PAS LOGIQUE\n.");
-	}
-}
-
-void	little_three(t_twostack *set, t_search *param)
-{
-	if (set->b.len == 1)
-		little_one(set, param);
-	else if (set->b.len == 2)
-		little_two(set, param);
-	else if (set->b.len == 3)
-	{
-		if (set->b.content[2] == param->smaller)
-		{
-			ft_putstr_fd("rrb\n", 1);
-			rev_rotate_b(set);
-			found_smaller_b(set, param);
-		}
-		else
-		{
-			little_two(set, param);
-		}
-	}
-}
-
 int		search_push(t_twostack *set, t_search *param, int med)
 {
 	int	i;
@@ -529,7 +493,7 @@ void	part_one_regroup(t_twostack *set, t_search *param)
 
 	len = (set->b.len / 2) + 1;
 	nb_push = 0;
-	while (set->b.len > 5)
+	while (set->b.len > 3)				// change if is not opti
 	{
 		mediane = def_mediane_b(set, param);
 		stock_med(mediane, param);
@@ -545,6 +509,122 @@ void	part_one_regroup(t_twostack *set, t_search *param)
 		}
 	}
 	sort_b_fast(set, param);
+	//print_stack(set);
+}
+
+int		count_nbrrr(t_twostack *set, t_search *param)
+{
+	int		i;
+	int		i_max;
+	int		max;
+	int		cpt;
+
+	i = 0;
+	max = set->b.content[0];
+	i_max = 0;
+	cpt = 0;
+	while (cpt < (set->a.len - param->nb_found))
+	{
+		if (set->b.content[i] > max)
+		{
+			max = set->b.content[i];
+			i_max = cpt;
+		}
+		i--;
+		if (i == -1)
+			i = set->b.len - 1;
+		cpt++;
+	}
+	return (i_max);
+}
+
+void	go_up(t_twostack *set, t_search *param, int rrr)
+{
+	int		i;
+
+	i = 0;
+	while (i < (set->a.len - param->nb_found))
+	{
+		if (i < rrr)
+		{
+			ft_putstr_fd("rrr\n" ,1);
+			rev_rotate_a(set);
+			rev_rotate_b(set);
+		}
+		else
+		{
+			ft_putstr_fd("rra\n" ,1);
+			rev_rotate_a(set);
+		}
+		i++;
+	}
+}
+
+void	little_two(t_twostack *set, t_search *param)
+{
+	while ((set->a.len - param->nb_found) != 0)
+	{
+		if (set->a.content[0] == param->smaller)
+			found_smaller_a(set, param);
+		else
+		{
+			ft_putstr_fd("sa\n", 1);
+			swap_a(set);
+		}
+	}
+}
+
+void	little_three(t_twostack *set, t_search *param)
+{
+	if ((set->a.len - param->nb_found) == 1)
+		found_smaller_a(set, param);
+	else if ((set->a.len - param->nb_found) == 2)
+		little_two(set, param);
+	else if ((set->a.len - param->nb_found) == 3)
+	{
+		if (set->a.content[2] == param->smaller)
+		{
+			ft_putstr_fd("pb\n", 1);
+			push_b(set);
+			ft_putstr_fd("sa\n", 1);
+			swap_a(set);
+			found_smaller_a(set, param);
+			ft_putstr_fd("pa\n", 1);
+			push_a(set);
+			little_two(set, param);
+		}
+		else if (set->a.content[1] == param->smaller)
+		{
+			ft_putstr_fd("sa\n", 1);
+			swap_a(set);
+			found_smaller_a(set, param);
+			little_two(set, param);
+		}
+		else
+		{
+			found_smaller_a(set, param);
+			little_two(set, param);
+		}
+	}
+}
+
+void	second_part_med(t_twostack *set, t_search *param)
+{
+	int	mediane;
+	int rrr;
+
+	while ((set->a.len - param->nb_found) > 3)				// change if is not opti
+	{
+		mediane = split_mediane_a(set, param);
+		//print_stack(set);
+		rrr = count_nbrrr(set, param);
+		//printf("rrr = %d\nlen = %d\n", rrr, set->a.len - param->nb_found);
+		go_up(set, param, rrr);
+		sort_b_fast(set, param);
+	}
+	little_three(set, param);
+	//print_stack(set);
+	//sort_b_fast(set, param);
 	//print_stack(set);
 }
 
@@ -582,7 +662,7 @@ void	algo_sort(t_twostack *set, t_search *param)
 	//printf("\n-----------------------------------------------\nPART 1 (mediane a):\n\n");
 
 	stock_med(split_mediane_a(set, param), param);
-
+	//print_stack(set);
 	//print_stack(set);
 
 	//printf("\n-----------------------------------------------\nPART 2 (regroup):\n\n");
@@ -595,22 +675,13 @@ void	algo_sort(t_twostack *set, t_search *param)
 	//printf("\n-----------------------------------------------\nPART 3 (little sort):\n\n");
 	//print_stack(set);
 	//moove_second_mediane_a(set, param);
-	//print_stack(set);
 	//printf("\n-----------------------------------------------\nPART 4 (push q2)):\n\n");
 	//return ;
 	push_before_mediane(set, param);
 	//print_stack(set);
-	return ;
-	//print_stack(set);
+	//printf("\n-----------------------------------------------\nmid:\n\n");
 
-	//sort_b_fast(set, param);
+	second_part_med(set, param);
 	//print_stack(set);
-	//printf("\n-----------------------------------------------\nPART 5 (push after mediane)):\n\n");
-	moove_second_mediane_a(set, param);
-	//print_stack(set);
-	//printf("\n-----------------------------------------------\nPART 6 (sort end)):\n\n");
-	sort_b_fast(set, param);
-	//print_stack(set);
-	//push_before_mediane(set, param, mediane);
-	//}
+	return ;
 }
