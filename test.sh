@@ -62,6 +62,9 @@ generate_test '1..500'
 printf "Test with [${CYAN}1000$END] numbers:\n"
 generate_test '1..1000'
 
+printf "Test with [${CYAN}10 000$END] numbers:\n"
+generate_test '1..10000'
+
 echo
 if [[ $RESULT == "OK" ]]; then
 	printf "Results : $GREEN%d/%d$END \n" "$CPT" "$NB_TEST"
