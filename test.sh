@@ -47,24 +47,6 @@ generate_test()
 
 # all tests
 
-printf "Test with [${CYAN}1$END] numbers:\n"
-test '4'
-
-printf "Test with [${CYAN}2$END] numbers:\n"
-test '4 2'
-
-printf "Test with [${CYAN}3$END] numbers:\n"
-generate_test '1..3'
-
-printf "Test with [${CYAN}10$END] numbers:\n"
-generate_test '-10..0'
-
-printf "Test with [${CYAN}20$END] numbers:\n"
-generate_test '1..20'
-
-printf "Test with [${CYAN}50$END] numbers:\n"
-generate_test '-25..25'
-
 printf "Test with [${CYAN}100$END] numbers:\n"
 generate_test '1..100'
 
