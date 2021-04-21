@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:41:18 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/19 02:17:59 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/21 01:36:28 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int		sort_a(t_twostack *set)
 int		start_check(int ac, char **av, t_twostack *set)
 {
 	char	*line;
+//	int		delete = 0;
 
 	if (initargs(ac, av, set) == -1)
 		return (err_msg());
@@ -104,7 +105,10 @@ int		start_check(int ac, char **av, t_twostack *set)
 	{
 		if (disp_cmd(line, set) == -1)
 			return (err_msg());
+		//delete++;
 		//print_stack(set);
+		//printf("%d - %s\n\n\n\n", delete, line);
+		// free line ?
 	}
 	if (set->b.len != 0 || sort_a(set) != 1)
 		ft_putstr_fd("KO\n", 1);
