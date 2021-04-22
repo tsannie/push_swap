@@ -73,17 +73,16 @@ do
 	NB_LINE=$(wc -l < $TMP)
 	RESULT=$(./checker $GENERATE < $TMP)
 	if [[ $RESULT == "OK" ]]; then
+		if [ $MIN -eq "-1" ] || [ $NB_LINE -lt $MIN ]; then
+			MIN=$NB_LINE;
+		fi;
+
+		if [ $MAX -eq "-1" ] || [ $NB_LINE -gt $MAX ]; then
+			MAX=$NB_LINE;
+		fi;
 		((CPT++))
 		MOY=$(($MOY + $NB_LINE))
 	fi
-
-	if [ $MIN -eq "-1" ] || [ $NB_LINE -lt $MIN ]; then
-		MIN=$NB_LINE;
-	fi;
-
-	if [ $MAX -eq "-1" ] || [ $NB_LINE -gt $MAX ]; then
-		MAX=$NB_LINE;
-	fi;
 
 	load "$I"
 
@@ -96,7 +95,7 @@ MOY=$(($MOY / $CPT))
 
 echo -ne "\t|$BPURPLE########################$END|"  $BGREEN' 100%\r'$END
 
-printf "\n\n\nResults for [TODO LIST SPEC] : \n\n"
+printf "\n\n\nResults for $BCYAN$NB_EXEC$END tests with an interval [${BCYAN}1-$NBR$END] : \n\n"
 
 printf "Minimum : $BGREEN%d$END\n" "$MIN"
 printf "Average : $BYELLOW%d$END\n" "$MOY"

@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/22 03:02:39 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/22 15:32:23 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ NAMEP			= ${BLUE}${BOLD}$(NAME)${END}
 #                        Source Files Checker                        #
 ######################################################################
 
-PUSHSWAP		= push_swap_main.c algo_sort.c sort_three.c choose_sort.c
+PUSHSWAP		= push_swap_main.c algo_sort.c sort_three.c choose_sort.c \
+				sort_five.c
 
 CHECKER			= checker_main.c
 
