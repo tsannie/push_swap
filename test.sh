@@ -10,7 +10,7 @@ GREEN="\033[1m\033[32m"
 END="\033[0m"
 
 # Compile and give permissions
-make
+
 chmod 755 push_swap
 chmod 755 checker
 
@@ -46,6 +46,18 @@ generate_test()
 }
 
 # all tests
+
+printf "Test with [${CYAN}1$END] numbers:\n"
+test '1'
+
+printf "Test with [${CYAN}2$END] numbers:\n"
+test '1 -50'
+
+printf "Test with [${CYAN}3$END] numbers:\n"
+test '3 2 1'
+
+printf "Test with [${CYAN}3$END] numbers:\n"
+test '1 2 3'
 
 printf "Test with [${CYAN}100$END] numbers:\n"
 generate_test '1..100'

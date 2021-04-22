@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/16 14:43:43 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/22 03:02:39 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,13 +46,13 @@ NAMEP			= ${BLUE}${BOLD}$(NAME)${END}
 #                        Source Files Checker                        #
 ######################################################################
 
-PUSHSWAP		= push_swap_main.c
+PUSHSWAP		= push_swap_main.c algo_sort.c sort_three.c choose_sort.c
 
 CHECKER			= checker_main.c
 
 COMMON			= start_check.c split_arg.c disp_cmd.c swap_cmd.c \
 				push_cmd.c rotate_cmd.c reverse_rotate_cmd.c handling_tab.c \
-				algo_sort.c
+
 
 SRC_CHECKER		= $(addprefix srcs/checker/, $(CHECKER)) \
 					$(addprefix srcs/files_common/, $(COMMON))
@@ -87,7 +87,13 @@ $(NAME): 	$(OBJ_C) $(OBJ_P)
 		@echo "$(NAMEP) ${GREEN}has been build !${END}\n"
 
 test:
+		@$(MAKE) all
 		@./test.sh
+		@$(MAKE) fclean
+
+stats:
+		@$(MAKE) all
+		@./push_stats.sh
 		@$(MAKE) fclean
 
 clean:

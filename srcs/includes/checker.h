@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:37:30 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/21 02:35:02 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/21 15:25:29 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct	s_search
 {
 	int			smaller;
 	int			nb_found;
-	int			end;
 }				t_search;
 
 int		start_check(int ac, char **av, t_twostack *set);
@@ -63,7 +62,11 @@ void	place_down_a(int value, t_twostack *set);
 void	place_down_b(int value, t_twostack *set);
 int		sort_a(t_twostack *set);
 
+void	switch_algo(t_twostack *set, t_search *param);
 void	algo_sort(t_twostack *set, t_search *param);
+void	little_three(t_twostack *set, t_search *param);
+
+int		min_stack(int *tab, int len);
 
 void	print_stack(t_twostack *set);		// to delete
 char	**split_arg(const char *str, char charset);

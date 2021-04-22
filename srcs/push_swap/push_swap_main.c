@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 07:58:50 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/15 08:35:06 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/21 15:25:47 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int				main(int ac, char **av)
 	if (initargs(ac, av, set) == -1)
 		return (err_msg());		// free
 	//print_stack(set);
-	algo_sort(set, param);
+	switch_algo(set, param);
 	//free_all(set);
 	return (0);
 }

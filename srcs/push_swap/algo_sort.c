@@ -6,35 +6,11 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 09:04:42 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/21 02:48:29 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/21 15:23:08 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
-
-void	little_two(t_twostack *set, t_search *param)
-{
-	if (sort_a(set) != 1)
-	{
-		ft_putstr_fd("sa\n", 1);
-		swap_a(set);
-	}
-}
-
-void	little_three(t_twostack *set, t_search *param)
-{
-	if ((set->a.len) == 2)
-		little_two(set, param);
-	else if ((set->a.len) == 3)
-	{
-		little_two(set, param);
-		if (sort_a(set) != 1)
-		{
-			ft_putstr_fd("rra\n", 1);
-			rev_rotate_a(set);
-		}
-	}
-}
 
 void	next_val_small(t_twostack *set, t_search *param)
 {
@@ -388,12 +364,6 @@ void	sort_b_fast(t_twostack *set, t_search *param)
 		found_smaller_a(set, param);
 }
 
-void	init_param(t_twostack *set, t_search *param)
-{
-	param->nb_found = 0;
-	param->smaller = min_stack(set->a.content, set->a.len);
-}
-
 void	push_after_mediane(t_twostack *set, t_search *param, int mediane)
 {
 	while (set->a.content[0] <= mediane)
@@ -543,7 +513,7 @@ void	end_push(t_twostack *set, t_search *param)
 void	algo_sort(t_twostack *set, t_search *param)
 {
 
-	init_param(set, param);
+
 	//print_stack(set);
 	part_one_regroup(set, param);
 	//print_stack(set);
