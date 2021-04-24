@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:41:18 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/21 01:36:28 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/24 16:23:39 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,9 @@ int		start_check(int ac, char **av, t_twostack *set)
 		if (disp_cmd(line, set) == -1)
 			return (err_msg());
 		//delete++;
-		//print_stack(set);
+		printf("\e[2J\e[H");
+		print_stack(set);
+		usleep(100000);
 		//printf("%d - %s\n\n\n\n", delete, line);
 		// free line ?
 	}
