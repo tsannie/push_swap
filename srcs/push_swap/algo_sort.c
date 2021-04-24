@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 09:04:42 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/22 15:38:12 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/23 21:43:41 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,8 @@ int		split_mediane_b(t_twostack *set, t_search *param)
 	i = 0;
 	tmp = set->b.len;
 	mediane = def_mediane_b(set, param);
-	while ((max_stack(set->b.content, set->b.len) > mediane) && set->b.len == 0)
+	//printf("med_b = %d\n", mediane);
+	while (max_stack(set->b.content, set->b.len) > mediane && set->b.len > 0)
 	{
 		if (set->b.content[0] == param->smaller)
 			found_smaller_b(set, param);
@@ -518,10 +519,8 @@ void	algo_sort(t_twostack *set, t_search *param)
 	//print_stack(set);
 	part_one_regroup(set, param);
 	//print_stack(set);
-	//print_stack(set);
 	while ((set->a.len - param->nb_found) > 20)
 		second_part_med(set, param);
-	//print_stack(set);
 	//push_after_mediane(set, param, max_stack(set->a.content, set->a.len - param->nb_found));
 	end_push(set, param);
 	//print_stack(set);
