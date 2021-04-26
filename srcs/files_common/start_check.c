@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:41:18 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/24 16:23:39 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/26 18:13:12 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,6 @@ int		err_msg(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	return (-1);
-}
-
-void	print_stack(t_twostack *set)		// to delete
-{
-	int	i = 0;
-	int stop = (set->a.len > set->b.len) ? set->a.len : set->b.len;
-
-	printf("stop = %d\n", stop);
-	printf("stack A {%d}\t\tstack B {%d}\n\n", set->a.len, set->b.len);
-	while (i < stop)
-	{
-		if (set->a.len > i)
-			printf("%-11d", set->a.content[i]);
-		else
-			printf("-----------");
-		printf("\t\t");
-		if (set->b.len > i)
-			printf("%-11d\n", set->b.content[i]);
-		else
-			printf("-----------\n");
-		i++;
-	}
 }
 
 int		not_stock(t_twostack *set, char *str)
@@ -56,16 +34,16 @@ int		not_stock(t_twostack *set, char *str)
 	return (0);
 }
 
-int		initargs(int ac, char **av, t_twostack *set)
+int		initargs(int ac, char **av, int arg, t_twostack *set)
 {
 	int		i;
 
-	if (!(set->a.content = malloc(sizeof(int) * ac - 1)))
+	if (!(set->a.content = malloc(sizeof(int) * (ac - arg))))
 		return (-1);
-	if (!(set->b.content = malloc(sizeof(int) * ac - 1)))
+	if (!(set->b.content = malloc(sizeof(int) * (ac - arg))))
 		return (-1);
-	i = 0;
-	while (i < (ac - 1))
+	i = arg - 1;
+	while (i < (ac - arg))
 	{
 		if (ft_isnumber(av[i + 1]) == 1 && not_stock(set, av[i + 1]) == 0)
 		{
@@ -93,12 +71,12 @@ int		sort_a(t_twostack *set)
 	return (1);
 }
 
-int		start_check(int ac, char **av, t_twostack *set)
+int		start_check(int ac, char **av, int arg, t_twostack *set)
 {
 	char	*line;
 //	int		delete = 0;
 
-	if (initargs(ac, av, set) == -1)
+	if (initargs(ac, av, arg, set) == -1)
 		return (err_msg());
 	//print_stack(set);
 	while (get_next_line(0, &line) > 0)
@@ -106,11 +84,10 @@ int		start_check(int ac, char **av, t_twostack *set)
 		if (disp_cmd(line, set) == -1)
 			return (err_msg());
 		//delete++;
-		printf("\e[2J\e[H");
-		print_stack(set);
-		usleep(100000);
+		if (set->opt > 0)
+			print_stack(set, line);
 		//printf("%d - %s\n\n\n\n", delete, line);
-		// free line ?
+		free(line);
 	}
 	if (set->b.len != 0 || sort_a(set) != 1)
 		ft_putstr_fd("KO\n", 1);

@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:30:12 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/23 11:30:48 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/26 17:16:08 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int				main(int ac, char **av)
 	if (!(param = malloc(sizeof(t_search) * 1)))
 		return (-1);
 	init_struct(set);
-	if (initargs(ac, av, set) == -1)
+	if (initargs(ac, av, 1, set) == -1)
 		return (err_msg());		// free
 	//print_stack(set);
 	switch_algo(set, param);

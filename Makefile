@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/22 15:32:23 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/26 18:45:38 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ CHECKER			= checker_main.c
 
 COMMON			= start_check.c split_arg.c disp_cmd.c swap_cmd.c \
 				push_cmd.c rotate_cmd.c reverse_rotate_cmd.c handling_tab.c \
+				print_set.c tools_stack.c
 
 
 SRC_CHECKER		= $(addprefix srcs/checker/, $(CHECKER)) \

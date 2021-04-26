@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:37:30 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/24 16:16:54 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/26 19:27:56 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../../libft/libft.h"
-
 # include <stdio.h>
+# include "ft_colors.h"
+# include "../../libft/libft.h"
 
 typedef struct	s_stack
 {
@@ -30,6 +30,7 @@ typedef struct	s_twostack
 {
 	t_stack		a;
 	t_stack		b;
+	int			opt;
 }				t_twostack;
 
 typedef struct	s_search
@@ -38,12 +39,13 @@ typedef struct	s_search
 	int			nb_found;
 }				t_search;
 
-int		start_check(int ac, char **av, t_twostack *set);
+void	print_stack(t_twostack *set, char *cmd);
+int		start_check(int ac, char **av, int arg, t_twostack *set);
 int		disp_cmd(char *line, t_twostack *set);
 void	init_struct(t_twostack *set);
 int		nb_nb(char **tab);
 int		err_msg(void);
-int		initargs(int ac, char **av, t_twostack *set);
+int		initargs(int ac, char **av, int arg, t_twostack *set);
 
 void	swap_a(t_twostack *set);
 void	swap_b(t_twostack *set);
@@ -68,9 +70,11 @@ void	algo_sort(t_twostack *set, t_search *param);
 void	little_three(t_twostack *set, t_search *param);
 void	little_five(t_twostack *set, t_search *param);
 
+int		max_stack(int *tab, int len);
 int		min_stack(int *tab, int len);
+int		def_mediane(int *tab, int len);
+int		next_val_bigger(t_twostack *set, int val);
 
-void	print_stack(t_twostack *set);		// to delete
 char	**split_arg(const char *str, char charset);
 
 #endif

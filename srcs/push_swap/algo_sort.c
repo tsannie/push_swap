@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 09:04:42 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/23 21:43:41 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/26 18:50:22 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,115 +35,6 @@ void	next_val_small(t_twostack *set, t_search *param)
 			param->smaller = set->b.content[i];
 		i++;
 	}
-}
-
-int		next_val_small_stack(int *tab, int len, int val)
-{
-	int		i;
-	int		ret;
-
-	i = 0;
-	ret = val;
-	while (i < len && ret == val)
-	{
-		if (tab[i] > ret)
-			ret = tab[i];
-		i++;
-	}
-	if (ret == val)
-		return (val);
-
-	i = 0;
-	while (i < len)
-	{
-		if (tab[i] > val && tab[i] < ret)
-			ret = tab[i];
-		i++;
-	}
-	return (ret);
-}
-
-int		min_stack(int *tab, int len)
-{
-	int		i;
-	int		min;
-
-	i = 0;
-	min = tab[0];
-	while (i < len)
-	{
-		if (tab[i] < min)
-			min = tab[i];
-		i++;
-	}
-	return (min);
-}
-
-int		max_stack(int *tab, int len)
-{
-	int		i;
-	int		max;
-
-	i = 0;
-	max = tab[0];
-	while (i < len)
-	{
-		if (tab[i] > max)
-			max = tab[i];
-		i++;
-	}
-	return (max);
-}
-
-int		def_mediane(int *tab, int len)
-{
-	int		e;
-	int		ret;
-
-	if (len <= 0)
-		return (0);
-	ret = min_stack(tab, len);
-	e = 1;
-	while (e != ((len) / 2) + 1)
-	{
-		ret = next_val_small_stack(tab, len, ret);
-		e++;
-	}
-	return (ret);
-}
-
-int		def_mediane_a(t_twostack *set, t_search *param)
-{
-	int		e;
-	int		ret;
-	int		len;
-
-	len = set->a.len - param->nb_found;
-	ret = min_stack(set->a.content, len);
-	e = 1;
-	while (e != ((len) / 2) + 1)
-	{
-		ret = next_val_small_stack(set->a.content, len, ret);
-		e++;
-	}
-	return (ret);
-}
-
-int		def_mediane_b(t_twostack *set, t_search *param)
-{
-	int		e;
-	int		ret;
-	int		len;
-
-	len = set->b.len;
-	ret = min_stack(set->b.content, len);
-	e = 1;
-	while (e != ((len) / 2) + 1)
-	{
-		ret = next_val_small_stack(set->b.content, len, ret);
-		e++;
-	}
-	return (ret);
 }
 
 void	found_smaller_a(t_twostack *set, t_search *param)
@@ -238,7 +129,7 @@ int		split_mediane_b(t_twostack *set, t_search *param)
 
 	i = 0;
 	tmp = set->b.len;
-	mediane = def_mediane_b(set, param);
+	mediane = def_mediane(set->b.content, set->b.len);
 	//printf("med_b = %d\n", mediane);
 	while (max_stack(set->b.content, set->b.len) > mediane && set->b.len > 0)
 	{
