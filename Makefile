@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/26 18:45:38 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/27 13:20:55 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME_C			= checker
 NAME			= push_swap
 
 CC				= @gcc
-CFLAGS			= #-Wall -Wextra -Werror #-fsanitize=leak
+CFLAGS			= -Wall -Wextra -Werror #-fsanitize=leak
 LIB_FLAGS		= -lncurses -lft -L ./libft
 RM				= @rm -rf
 LIBFT			= ./libft
@@ -75,10 +75,12 @@ OBJ_P			= $(SRC_PUSHSWAP:c=o)
 ######################################################################
 
 %.o: %.c
-			@printf "${PURPLE}${BOLD}Start compile ... %-35.35s\r${END}" $@
+			@printf "${PURPLE}${BOLD}%-35.35s\r${END}" $@
 			${CC} ${CFLAGS} -c $< -o $@
 
-all:		$(NAME)
+all:
+			@printf "${PURPLE}${BOLD}Start compile ...\n${END}"
+			@$(MAKE) $(NAME)
 
 $(NAME): 	$(OBJ_C) $(OBJ_P)
 		@echo "\n"

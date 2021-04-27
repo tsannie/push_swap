@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:39:52 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/26 16:08:37 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/27 12:59:05 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,8 @@ static int	opt(char *option, t_twostack *set)
 	return (0);
 }
 
-int				main(int ac, char **av)
+int		search_opt(int ac, char **av, int arg, t_twostack *set)
 {
-	t_twostack		*set;
-	int				arg;
-
-	arg = 1;
-	if (ac == arg)
-		return (0);
-	if (!(set = malloc(sizeof(t_twostack) * 1)))
-		return (-1);
 	init_struct(set);
 	while (av[arg][0] == '-')
 	{
@@ -55,20 +47,33 @@ int				main(int ac, char **av)
 			return (err_msg());
 		}
 		arg++;
+		if (ac == arg)
+			return (0);
 	}
+	return (arg);
+}
+
+int				main(int ac, char **av)
+{
+	t_twostack		*set;
+	int				arg;
+
+	if (!(set = malloc(sizeof(t_twostack) * 1)))
+		return (-1);
+	arg = 1;
+	if ((arg = search_opt(ac, av, arg, set)) <= 0)
+		return (arg);
 	if (ac == (arg + 1))
 	{
-		av = split_arg(av[ac - 1], ' ');		// for ARG=`ruby -e "puts (1..50).to_a.shuffle.join('|')"`
+		av = split_arg(av[ac - 1], ' ');
 		ac = nb_nb(av);
 		arg = 1;
 	}
-	//printf("opt = %d\narg = %d\nac = %d\n",set->opt, arg, ac);
 	if (start_check(ac, av, arg, set) == -1)
 	{
 		free_all(set);
 		return (-1);
 	}
-	//printf("opt = %d\n",set->opt);
 	free_all(set);
 	return (0);
 }

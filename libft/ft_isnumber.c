@@ -6,11 +6,12 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:50:40 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/12 10:50:58 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/27 12:58:35 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	max_int(char *str)
 {
