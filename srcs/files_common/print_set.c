@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 16:56:29 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/26 20:54:18 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/28 09:09:07 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	print_val(t_stack stack, int i, int clr, int next_place)
 {
 	int		max;
 	int		min;
-	int		place;
 
 	max = max_stack(stack.content, stack.len);
 	min = min_stack(stack.content, stack.len);
@@ -45,8 +44,8 @@ int		min_in_a(t_twostack *set, int min)
 		i = 0;
 		while (set->a.content[i] != min)
 			i++;
-		printf("after 1 = %d\n", next_val_bigger(set, min));
-		if (next_val_bigger(set, min) == set->a.content[i + 1] && (i + 1) < set->a.len)
+		if (next_val_bigger(set, min) == set->a.content[i + 1]
+			&& (i + 1) < set->a.len)
 			return (1);
 	}
 	return (0);
@@ -54,7 +53,7 @@ int		min_in_a(t_twostack *set, int min)
 
 int		prev_init(t_twostack *set)
 {
-	int 	min_a;
+	int		min_a;
 	int		min_b;
 
 	min_a = min_stack(set->a.content, set->a.len);
@@ -64,22 +63,13 @@ int		prev_init(t_twostack *set)
 	if (min_a < min_b)
 		return (min_a - 1);
 	return (min_b - 1);
-
 }
 
-void	print_stack(t_twostack *set, char *cmd)
+void	loop_print(int stop, int prev, t_twostack *set)
 {
-	int	i = 0;
-	int stop = (set->a.len > set->b.len) ? set->a.len : set->b.len;
-	int	prev;
+	int	i;
 
-	printf("\n-----------------------------------\n");
-	prev = prev_init(set);
-	printf("\e[2J\e[H");
-	if (set->opt == 2)
-		printf("Stack_A {"BCYAN"%d"END"}\t\tStack_B {"BCYAN"%d"END"}\n\n", set->a.len, set->b.len);
-	else
-		printf("Stack_A {%d}\t\tStack_B {%d}\n\n", set->a.len, set->b.len);
+	i = 0;
 	while (i < stop)
 	{
 		if (set->a.len > i)
@@ -98,6 +88,22 @@ void	print_stack(t_twostack *set, char *cmd)
 		printf("\n");
 		i++;
 	}
+}
+
+void	print_stack(t_twostack *set, char *cmd)
+{
+	int stop;
+	int	prev;
+
+	stop = (set->a.len > set->b.len) ? set->a.len : set->b.len;
+	prev = prev_init(set);
+	printf("\e[2J\e[H");
+	if (set->opt == 2)
+		printf("Stack_A {"BCYAN"%d"END"}\t\t"
+			"Stack_B {"BCYAN"%d"END"}\n\n", set->a.len, set->b.len);
+	else
+		printf("Stack_A {%d}\t\tStack_B {%d}\n\n", set->a.len, set->b.len);
+	loop_print(stop, prev, set);
 	if (set->opt == 2)
 		printf("\nExec : "BYELLOW"%s"END"\n", cmd);
 	else

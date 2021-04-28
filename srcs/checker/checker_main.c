@@ -6,13 +6,13 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:39:52 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/27 12:59:05 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/28 09:11:25 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 
-void	free_all(t_twostack *set)
+void		free_all(t_twostack *set)
 {
 	free(set->a.content);
 	free(set->b.content);
@@ -36,7 +36,7 @@ static int	opt(char *option, t_twostack *set)
 	return (0);
 }
 
-int		search_opt(int ac, char **av, int arg, t_twostack *set)
+int			search_opt(int ac, char **av, int arg, t_twostack *set)
 {
 	init_struct(set);
 	while (av[arg][0] == '-')
@@ -53,7 +53,7 @@ int		search_opt(int ac, char **av, int arg, t_twostack *set)
 	return (arg);
 }
 
-int				main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_twostack		*set;
 	int				arg;

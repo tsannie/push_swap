@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:30:12 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/26 17:16:08 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/28 08:58:37 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int				main(int ac, char **av)
 		return (0);
 	if (ac == 2)
 	{
-		av = split_arg(av[1], ' ');		// for ARG=`ruby -e "puts (1..50).to_a.shuffle.join('|')"`
+		av = split_arg(av[1], ' ');
 		ac = nb_nb(av);
 	}
 	if (!(set = malloc(sizeof(t_twostack) * 1)))
@@ -32,7 +32,6 @@ int				main(int ac, char **av)
 	init_struct(set);
 	if (initargs(ac, av, 1, set) == -1)
 		return (err_msg());		// free
-	//print_stack(set);
 	switch_algo(set, param);
 	//free_all(set);
 	return (0);

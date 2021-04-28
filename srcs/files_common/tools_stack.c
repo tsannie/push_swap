@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 18:45:22 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/26 20:23:29 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/28 09:09:34 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int		next_val_small_stack(int *tab, int len, int val)
 	}
 	if (ret == val)
 		return (val);
-
 	i = 0;
 	while (i < len)
 	{

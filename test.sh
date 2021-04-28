@@ -59,20 +59,29 @@ test '3 2 1'
 printf "Test with [${CYAN}3$END] numbers:\n"
 test '1 2 3'
 
+printf "Test with [${CYAN}5$END] numbers:\n"
+generate_test '1..5'
+
+printf "Test with [${CYAN}10$END] numbers:\n"
+generate_test '1..10'
+
+printf "Test with [${CYAN}20$END] numbers:\n"
+generate_test '1..20'
+
+printf "Test with [${CYAN}50$END] numbers:\n"
+generate_test '1..50'
+
 printf "Test with [${CYAN}100$END] numbers:\n"
 generate_test '1..100'
 
 printf "Test with [${CYAN}500$END] numbers:\n"
 generate_test '1..500'
 
-printf "Test with [${CYAN}500$END] numbers:\n"
-generate_test '1..500'
-
-printf "Test with [${CYAN}500$END] numbers:\n"
-generate_test '1..500'
-
 printf "Test with [${CYAN}1000$END] numbers:\n"
 generate_test '1..1000'
+
+printf "Test with [${CYAN}5000$END] numbers:\n"
+generate_test '1..5000'
 
 printf "Test with [${CYAN}10 000$END] numbers:\n"
 generate_test '1..10000'

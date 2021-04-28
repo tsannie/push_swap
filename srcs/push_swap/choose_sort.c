@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 13:06:35 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/26 17:16:08 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/28 08:58:49 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ void	switch_algo(t_twostack *set, t_search *param)
 {
 	init_param(set, param);
 	if (set->a.len <= 3)
-		little_three(set, param);
+		little_three(set);
 	else if (set->a.len <= 5)
 		little_five(set, param);
 	else
 		algo_sort(set, param);
-	//print_stack(set);
 }

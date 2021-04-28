@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:37:30 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/26 19:27:56 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/28 08:28:27 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		sort_a(t_twostack *set);
 int		split_mediane_a(t_twostack *set, t_search *param);
 void	switch_algo(t_twostack *set, t_search *param);
 void	algo_sort(t_twostack *set, t_search *param);
-void	little_three(t_twostack *set, t_search *param);
+void	little_three(t_twostack *set);
 void	little_five(t_twostack *set, t_search *param);
 
 int		max_stack(int *tab, int len);
