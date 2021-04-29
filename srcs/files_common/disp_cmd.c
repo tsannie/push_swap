@@ -12,16 +12,6 @@
 
 #include "../includes/checker.h"
 
-int		nb_nb(char **tab)
-{
-	int		i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
-}
-
 void	init_struct(t_twostack *set)
 {
 	set->a.content = NULL;

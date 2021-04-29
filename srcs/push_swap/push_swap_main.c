@@ -27,11 +27,6 @@ int				main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
-	if (ac == 2)
-	{
-		av = split_arg(av[1], ' ');
-		ac = nb_nb(av);
-	}
 	if (!(set = malloc(sizeof(t_twostack) * 1)))
 		return (-1);
 	if (!(param = malloc(sizeof(t_search) * 1)))

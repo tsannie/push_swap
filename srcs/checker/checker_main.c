@@ -62,18 +62,16 @@ int				main(int ac, char **av)
 		return (-1);
 	arg = 1;
 	if ((arg = search_opt(ac, av, arg, set)) <= 0)
-		return (arg);
-	if (ac == (arg + 1))
 	{
-		av = split_arg(av[ac - 1], ' ');
-		ac = nb_nb(av);
-		arg = 1;
+		free_all(set);
+		return (arg);	
 	}
 	if (start_check(ac, av, arg, set) == -1)
 	{
 		free_all(set);
 		return (-1);
 	}
+	//ft_free_dbtab(slt);
 	free_all(set);
 	return (0);
 }

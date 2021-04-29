@@ -120,11 +120,9 @@ int		split_mediane_a(t_twostack *set, t_search *param)
 int		split_mediane_b(t_twostack *set, t_search *param)
 {
 	int	mediane;
-	int tmp;
 	int	i;
 
 	i = 0;
-	tmp = set->b.len;
 	mediane = def_mediane(set->b.content, set->b.len);
 	while (max_stack(set->b.content, set->b.len) > mediane && set->b.len > 0)
 	{

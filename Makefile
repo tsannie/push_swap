@@ -18,7 +18,7 @@ NAME_C			= checker
 NAME			= push_swap
 
 CC				= @gcc
-CFLAGS			= -Wall -Wextra -Werror #-fsanitize=leak
+CFLAGS			= -Wall -Wextra -Werror -fsanitize=leak
 LIB_FLAGS		= -lncurses -lft -L ./libft
 RM				= @rm -rf
 LIBFT			= ./libft
@@ -51,7 +51,7 @@ PUSHSWAP		= push_swap_main.c algo_sort.c sort_three.c choose_sort.c \
 
 CHECKER			= checker_main.c
 
-COMMON			= start_check.c split_arg.c disp_cmd.c swap_cmd.c \
+COMMON			= start_check.c disp_cmd.c swap_cmd.c \
 				push_cmd.c rotate_cmd.c reverse_rotate_cmd.c handling_tab.c \
 				print_set.c tools_stack.c
 

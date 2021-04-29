@@ -43,7 +43,6 @@ void	print_stack(t_twostack *set, char *cmd);
 int		start_check(int ac, char **av, int arg, t_twostack *set);
 int		disp_cmd(char *line, t_twostack *set);
 void	init_struct(t_twostack *set);
-int		nb_nb(char **tab);
 int		err_msg(void);
 int		initargs(int ac, char **av, int arg, t_twostack *set);
 
@@ -75,6 +74,5 @@ int		min_stack(int *tab, int len);
 int		def_mediane(int *tab, int len);
 int		next_val_bigger(t_twostack *set, int val);
 
-char	**split_arg(const char *str, char charset);
 
 #endif
