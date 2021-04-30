@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:39:52 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/28 13:16:34 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/04/30 10:34:09 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,13 @@ int				main(int ac, char **av)
 	if ((arg = search_opt(ac, av, arg, set)) <= 0)
 	{
 		free_all(set);
-		return (arg);	
+		return (arg);
 	}
 	if (start_check(ac, av, arg, set) == -1)
 	{
 		free_all(set);
 		return (-1);
 	}
-	//ft_free_dbtab(slt);
 	free_all(set);
 	return (0);
 }

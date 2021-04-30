@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/27 13:20:55 by tsannie          ###   ########.fr        #
+#    Updated: 2021/04/30 10:48:21 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME_C			= checker
 NAME			= push_swap
 
 CC				= @gcc
-CFLAGS			= -Wall -Wextra -Werror -fsanitize=leak
+CFLAGS			= -Wall -Wextra -Werror #-fsanitize=leak
 LIB_FLAGS		= -lncurses -lft -L ./libft
 RM				= @rm -rf
 LIBFT			= ./libft
@@ -46,8 +46,9 @@ NAMEP			= ${BLUE}${BOLD}$(NAME)${END}
 #                        Source Files Checker                        #
 ######################################################################
 
-PUSHSWAP		= push_swap_main.c algo_sort.c sort_three.c choose_sort.c \
-				sort_five.c
+PUSHSWAP		= push_swap_main.c sort_b_fast.c sort_three.c \
+				sort_five.c algo_sort1.c algo_sort2.c tools_med.c \
+				choose_sort.c
 
 CHECKER			= checker_main.c
 
