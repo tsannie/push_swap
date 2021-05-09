@@ -80,11 +80,11 @@ generate_test '1..500'
 printf "Test with [${CYAN}1000$END] numbers:\n"
 generate_test '1..1000'
 
+printf "Test with [${CYAN}2000$END] numbers:\n"
+generate_test '-1000..1000'
+
 printf "Test with [${CYAN}5000$END] numbers:\n"
 generate_test '1..5000'
-
-printf "Test with [${CYAN}10 000$END] numbers:\n"
-generate_test '1..10000'
 
 echo
 if [[ $RESULT == "OK" ]]; then
