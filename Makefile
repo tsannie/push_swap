@@ -6,7 +6,7 @@
 #    By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 15:57:25 by tsannie           #+#    #+#              #
-#    Updated: 2021/04/30 10:48:21 by tsannie          ###   ########.fr        #
+#    Updated: 2021/05/09 17:20:08 by tsannie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME_C			= checker
 NAME			= push_swap
 
 CC				= @gcc
-CFLAGS			= -Wall -Wextra -Werror #-fsanitize=leak
+CFLAGS			= -Wall -Wextra -Werror
 LIB_FLAGS		= -lncurses -lft -L ./libft
 RM				= @rm -rf
 LIBFT			= ./libft
@@ -76,12 +76,12 @@ OBJ_P			= $(SRC_PUSHSWAP:c=o)
 ######################################################################
 
 %.o: %.c
-			@printf "${PURPLE}${BOLD}%-35.35s\r${END}" $@
-			${CC} ${CFLAGS} -c $< -o $@
+		@printf "${PURPLE}${BOLD}%-35.35s\r${END}" $@
+		${CC} ${CFLAGS} -c $< -o $@
 
 all:
-			@printf "${PURPLE}${BOLD}Start compile ...\n${END}"
-			@$(MAKE) $(NAME)
+		@printf "${PURPLE}${BOLD}Start compile ...\n${END}"
+		@$(MAKE) $(NAME)
 
 $(NAME): 	$(OBJ_C) $(OBJ_P)
 		@echo "\n"
@@ -113,5 +113,7 @@ fclean:		clean
 		"$(NAMEP)${LIGHTPURPLE} ...${END}\n"
 
 re:			fclean all
+
+bonus:		all
 
 .PHONY:		all test clean fclean re

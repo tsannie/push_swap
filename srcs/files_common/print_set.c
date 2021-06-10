@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 16:56:29 by tsannie           #+#    #+#             */
-/*   Updated: 2021/04/28 09:09:07 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/06/07 07:34:59 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ void	print_stack(t_twostack *set, char *cmd)
 		printf("\nExec : "BYELLOW"%s"END"\n", cmd);
 	else
 		printf("\nExec : %s\n", cmd);
-	usleep(70000);
+	usleep(140000);
 }

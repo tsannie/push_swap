@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 09:04:42 by tsannie           #+#    #+#             */
-/*   Updated: 2021/05/09 15:06:02 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/06/07 07:31:43 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	end_push(t_twostack *set, t_search *param)
 void	algo_sort(t_twostack *set, t_search *param)
 {
 	part_one_regroup(set, param);
+
+
 	while ((set->a.len - param->nb_found) > 20)
 		second_part_med(set, param);
 	end_push(set, param);

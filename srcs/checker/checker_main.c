@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:39:52 by tsannie           #+#    #+#             */
-/*   Updated: 2021/05/09 16:13:56 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/05/11 13:20:48 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ static int		opt(char *option, t_twostack *set)
 
 int				search_opt(int ac, char **av, int arg, t_twostack *set)
 {
+	if (ac == 1)
+		return (0);
 	init_struct(set);
 	while (av[arg][0] == '-' && ft_isnumber(av[arg]) == 0)
 	{
 		if (opt(av[arg], set) == -1)
 		{
-			free_all(set);
+			free(set);
 			return (err_msg());
 		}
 		arg++;
@@ -62,10 +64,7 @@ int				main(int ac, char **av)
 		return (-1);
 	arg = 1;
 	if ((arg = search_opt(ac, av, arg, set)) <= 0)
-	{
-		free_all(set);
 		return (arg);
-	}
 	if (start_check(ac, av, arg, set) == -1)
 	{
 		free_all(set);

@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:50:40 by tsannie           #+#    #+#             */
-/*   Updated: 2021/05/09 15:35:28 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/05/14 13:00:46 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	max_int(char *str)
 	long long	value;
 
 	value = ft_atoll(str);
-	if (value > I_MAX || value < I_MIN)
+	if (value > I_MAX || value < I_MIN || ft_streql(str, "-") == 1)
 		return (0);
 	return (1);
 }

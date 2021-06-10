@@ -6,7 +6,7 @@
 /*   By: tsannie <tsannie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:41:18 by tsannie           #+#    #+#             */
-/*   Updated: 2021/05/09 15:29:51 by tsannie          ###   ########.fr       */
+/*   Updated: 2021/05/11 13:27:37 by tsannie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int		initargs(int ac, char **av, int arg, t_twostack *set)
 	int		i;
 	int		e;
 
-	if (!(set->a.content = malloc(sizeof(int) * (ac - arg))))
+	if (!(set->a.content = malloc(sizeof(int) * (ac - arg + 1))))
 		return (-1);
-	if (!(set->b.content = malloc(sizeof(int) * (ac - arg))))
+	if (!(set->b.content = malloc(sizeof(int) * (ac - arg + 1))))
 		return (-1);
 	i = arg;
 	e = 0;
@@ -88,6 +88,7 @@ int		start_check(int ac, char **av, int arg, t_twostack *set)
 			print_stack(set, line);
 		free(line);
 	}
+	free(line);
 	if (set->b.len != 0 || sort_a(set) != 1)
 		ft_putstr_fd("KO\n", 1);
 	else
