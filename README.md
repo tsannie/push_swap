@@ -22,7 +22,7 @@ I was inspired by [Quicksort](https://en.wikipedia.org/wiki/Quicksort) algorithm
 - Worst case : `O(n²)`
 - Best case : `O(n log n)`
 - Average case : `O(n log n)`
-- Memory used :`O(n)`
+- Memory used :`O(2n)`
 
 ## 📚 Usage
 
